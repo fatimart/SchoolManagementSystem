@@ -86,7 +86,7 @@
                             <DataGridTextColumn x:Name="contactNoColumn" Binding="{Binding ContactNo}" Header="Contact No" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="DeleteStudent" Content="DELETE" Margin="49,0,0,21" Grid.Row="2" RenderTransformOrigin="1.426,1" HorizontalAlignment="Left" Width="68" Grid.Column="4" Height="28" VerticalAlignment="Bottom"/>
+                    <Button x:Name="DeleteStudent" Content="DELETE" Margin="49,0,0,21" Grid.Row="2" RenderTransformOrigin="1.426,1" HorizontalAlignment="Left" Width="68" Grid.Column="4" Height="28" VerticalAlignment="Bottom" Click="DeleteStudent_Click"/>
                     <Button x:Name="UpdateStudent" Content="UPDATE" Margin="18,407,587,21" Grid.Row="2" RenderTransformOrigin="1.426,1" Grid.Column="2" Click="UpdateStudent_Click" Grid.ColumnSpan="3"/>
                     <Button x:Name="AddNewStudent" Content="INSERT" Margin="58,407,0,21" Grid.Row="2" RenderTransformOrigin="1.426,1" Click="AddNewStudent_Click" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="68"/>
                 </Grid>

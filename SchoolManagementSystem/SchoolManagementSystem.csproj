@@ -108,13 +108,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolMSDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CourseViewModel.cs" />
+    <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\SectionViewModel.cs" />
+    <Compile Include="ViewModels\StudentGradeViewModel.cs" />
+    <Compile Include="ViewModels\TimeTableViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\YearViewModel.cs" />
+    <Compile Include="Views\CourseListScreen.xaml.cs">
+      <DependentUpon>CourseListScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomeScreen.xaml.cs">
       <DependentUpon>HomeScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterUsers.xaml.cs">
       <DependentUpon>RegisterUsers.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\CourseListScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\HomeScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -162,7 +162,7 @@ namespace SchoolManagementSystem.ViewModels
         }
 
 
-        public void InsertUser (string username, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
+        public void InsertUser ( string username, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
         {
             try
             {
@@ -182,7 +182,7 @@ namespace SchoolManagementSystem.ViewModels
 
                 ty.Users.Add(user1);
                 ty.SaveChanges();
-                
+
             }
             catch (Exception ex)
             {
@@ -193,7 +193,7 @@ namespace SchoolManagementSystem.ViewModels
 
         public void UpdateUser ( int userID, string username, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
         {
-            if (checkIfMemberExists(userID))
+            if (CheckIfUserExists(userID))
             {
                 try
                 {
@@ -228,8 +228,51 @@ namespace SchoolManagementSystem.ViewModels
             }
         }
 
+        public void DeleteUser ( int userID )
+        {
+            if (CheckIfUserExists(userID))
+            {
+                try
 
-        bool checkIfMemberExists (int userID)
+                {
+
+                    var deleteUser = ty.Users.Where(m => m.UserID == userID).Single();
+                    ty.Users.Remove(deleteUser);
+                    ty.SaveChanges();
+                }
+            
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
+            else
+            {
+                MessageBox.Show("Invalid user Id");
+
+            }
+        }
+
+
+
+        public bool CheckIfUserExists ( int userID )
+        {
+            try
+            {
+                var user = ty.Users.Where(m => m.UserID == userID).Single();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
+
+        }
+
+        /**bool checkIfMemberExists (int userID)
         {
             string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
@@ -268,7 +311,7 @@ namespace SchoolManagementSystem.ViewModels
 
         }
 
-
+        **/
         //MARK: Get A list of all users
         /**public List<User> getAllUsers ()
         {
@@ -454,3 +497,4 @@ namespace SchoolManagementSystem.ViewModels
         **/
 
     }
+}

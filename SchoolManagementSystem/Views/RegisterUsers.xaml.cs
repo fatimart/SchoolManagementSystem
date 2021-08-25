@@ -27,15 +27,15 @@ namespace SchoolManagementSystem.Views
     {
         
 
-        private readonly UserViewModel _viewModel;
+        private readonly UserViewModel _userViewModel;
         SchoolMSEntities1 dataEntities = new SchoolMSEntities1();
         public RegisterUsers ()
         {
             InitializeComponent();
-            _viewModel = new UserViewModel();
+            _userViewModel = new UserViewModel();
 
             // The DataContext serves as the starting point of Binding Paths
-            DataContext = _viewModel;
+            DataContext = _userViewModel;
         }
 
 
@@ -64,7 +64,7 @@ namespace SchoolManagementSystem.Views
 
         private void AddNewStudent_Click ( object sender, RoutedEventArgs e )
         {
-            _viewModel.InsertUser(
+            _userViewModel.InsertUser(
                                       //Convert.ToInt32(userIDTextBox.Text.Trim()),
                                       userNameTextBox.Text.Trim(),
                                       nameTextBox.Text.Trim(),
@@ -81,7 +81,7 @@ namespace SchoolManagementSystem.Views
 
         private void UpdateStudent_Click ( object sender, RoutedEventArgs e )
         {
-            _viewModel.UpdateUser(
+            _userViewModel.UpdateUser(
                                       Convert.ToInt32(userIDTextBox.Text.Trim()),
                                       userNameTextBox.Text.Trim(),
                                       nameTextBox.Text.Trim(),
@@ -97,7 +97,7 @@ namespace SchoolManagementSystem.Views
 
         private void AddNewTeacher_Click ( object sender, RoutedEventArgs e )
         {
-            _viewModel.InsertUser(
+            _userViewModel.InsertUser(
                                       //Convert.ToInt32(tuserIDTextBox.Text.Trim()),
                                       tuserNameTextBox.Text.Trim(),
                                       tnameTextBox.Text.Trim(),
@@ -115,7 +115,7 @@ namespace SchoolManagementSystem.Views
 
         private void UpdateTeacher_Click ( object sender, RoutedEventArgs e )
         {
-            _viewModel.UpdateUser(
+            _userViewModel.UpdateUser(
                                       Convert.ToInt32(tuserIDTextBox.Text.Trim()),
                                       tuserNameTextBox.Text.Trim(),
                                       tnameTextBox.Text.Trim(),
@@ -149,43 +149,9 @@ namespace SchoolManagementSystem.Views
 
         }
 
-        /**void signUpNewUser ()
-{
+        private void DeleteStudent_Click ( object sender, RoutedEventArgs e )
+        {
 
-   try
-   {
-       SqlConnection con = new SqlConnection(strcon);
-       //check if the connec is opened or not
-       if (con.State == ConnectionState.Closed)
-       {
-           con.Open();
-       }
-
-
-       //query
-       SqlCommand cmd = new SqlCommand("INSERT INTO Users(UserName,Name,Email,CPR,Address,DOB,Type,Password,ContactNo) VALUES " +
-           "(@UserName,@Name,@Email,@CPR,@Address,@DOB,@Type,@Password,@ContactNo)", con);                //clear enterstring Trim
-
-       cmd.Parameters.AddWithValue("@UserName", TextBox3.Text.Trim());
-       cmd.Parameters.AddWithValue("@Name", TextBox5.Text.Trim());
-       cmd.Parameters.AddWithValue("@Email", TextBox4.Text.Trim());
-       cmd.Parameters.AddWithValue("@CPR", TextBox6.Text.Trim());
-       cmd.Parameters.AddWithValue("@Address", DropDownList1.SelectedItem.Value);
-       cmd.Parameters.AddWithValue("@DOB", TextBox2.Text.Trim());
-       cmd.Parameters.AddWithValue("@Type", TextBox7.Text.Trim());
-       cmd.Parameters.AddWithValue("@Password", TextBox1.Text.Trim());
-       cmd.Parameters.AddWithValue("@ContactNo", TextBox8.Text.Trim());
-       
-       cmd.ExecuteNonQuery();
-       con.Close();
-
-       MessageBox.Show(" User Have been Registered Successfullty");
-   }
-   catch (Exception ex)
-   {
-       MessageBox.Show(ex.Message);
-
-   }
-}**/
+        }
     }
 }
