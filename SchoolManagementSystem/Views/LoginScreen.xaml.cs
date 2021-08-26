@@ -26,6 +26,7 @@ namespace SchoolManagementSystem
     public partial class LoginScreen : Window
     {
         UserViewModel userViewModel = new UserViewModel();
+        
 
         public LoginScreen ()
         {
@@ -37,7 +38,7 @@ namespace SchoolManagementSystem
         {
             if(userViewModel.login(txtUsername.Text.Trim(), txtPassword.Password.ToString()))
             {
-                RegisterUsers dashboard = new RegisterUsers();
+                ProfileScreen dashboard = new ProfileScreen();
                 dashboard.Show();
                 this.Close();
             }
