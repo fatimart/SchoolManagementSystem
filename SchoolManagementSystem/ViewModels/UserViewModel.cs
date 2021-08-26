@@ -23,7 +23,7 @@ namespace SchoolManagementSystem.ViewModels
 
         private SchoolMSEntities1 ty = new SchoolMSEntities1();
 
-        public static User session;
+        public static User Usersession;
 
         //ViewModel
         public UserViewModel ()
@@ -98,14 +98,20 @@ namespace SchoolManagementSystem.ViewModels
                                 ContactNo = reader["ContactNo"].ToString(),
 
                             };
-                            Application.Current.Resources["userref"] = user2;
-                            Application.Current.Resources["UserName"] = user2.UserName;
-                            Application.Current.Resources["Name"] = user2.Name;
-                            Application.Current.Resources["Type"] = user.Type;
-                        }
 
+                            Usersession = user2;
+                           // Application.Current.Resources["userref"] = user2;
+                         //   Application.Current.Resources["UserName"] = user2.UserName;
+                          //  Application.Current.Resources["Name"] = user2.Name;
+                          //  Application.Current.Resources["Type"] = user.Type;
+                        }
+                        //MessageBox.Show(userSession.UserName);
+                      //  MessageBox.Show(Application.Current.Resources["UserName"].ToString());
+                      //  MessageBox.Show(Usersession.UserName);
                         reader.Close();
                         return true;
+                    
+                 
                     }
                     else
                     {
