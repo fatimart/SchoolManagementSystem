@@ -11,7 +11,7 @@
         <SchoolManagementSystem:SchoolMSDataSet x:Key="schoolMSDataSet"/>
         <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource schoolMSDataSet}}"/>
     </Window.Resources>
-    <Grid>
+    <Grid DataContext="{StaticResource usersViewSource}">
         <TabControl SelectedIndex="{Binding Mode=OneWay}">
             <TabItem Header=" Students">
 
@@ -28,7 +28,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid x:Name="grid1" DataContext="{StaticResource usersViewSource}" VerticalAlignment="Top" Grid.Row="2" Margin="84,24,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="5">
+                    <Grid x:Name="grid1" VerticalAlignment="Top" Grid.Row="2" Margin="84,24,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -104,7 +104,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid x:Name="gridt" VerticalAlignment="Top" Grid.Row="2" Margin="47,42,0,0" HorizontalAlignment="Left" DataContext="{StaticResource usersViewSource}" Grid.ColumnSpan="2" Grid.Column="1">
+                    <Grid x:Name="gridt" VerticalAlignment="Top" Grid.Row="2" Margin="47,42,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>

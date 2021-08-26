@@ -6,12 +6,7 @@
         xmlns:local="clr-namespace:SchoolManagementSystem"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Window.Resources>
-        <local:SchoolMSDataSet x:Key="schoolMSDataSet"/>
-        <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource schoolMSDataSet}}"/>
-    </Window.Resources>
-
-    <Grid DataContext="{StaticResource usersViewSource}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
@@ -39,24 +34,10 @@
                 VerticalAlignment="Top" Width="142"  
                 Command="{Binding Path=UpdateCommad}" Grid.Column="1"  />
 
-        <DataGrid x:Name="usersDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="2" EnableRowVirtualization="True" ItemsSource="{Binding}" Grid.Row="3" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid Name="userDataGrid" ItemsSource="{Binding Users}" Grid.ColumnSpan="2" Margin="10,63,10,-56" Grid.Row="3">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="userIDColumn" Binding="{Binding UserID}" Header="User ID" IsReadOnly="True" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="userNameColumn" Binding="{Binding UserName}" Header="User Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="emailColumn" Binding="{Binding Email}" Header="Email" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="cPRColumn" Binding="{Binding CPR}" Header="CPR" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="addressColumn" Binding="{Binding Address}" Header="Address" Width="SizeToHeader"/>
-                <DataGridTemplateColumn x:Name="dOBColumn" Header="DOB" Width="SizeToHeader">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding DOB, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding Password}" Header="Password" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="contactNoColumn" Binding="{Binding ContactNo}" Header="Contact No" Width="SizeToHeader"/>
+                <DataGridTextColumn Header="c" Width="200" Binding="{Binding ContactNo}"/>
+                <DataGridTextColumn Header="u" Width="200" Binding="{Binding UserName}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

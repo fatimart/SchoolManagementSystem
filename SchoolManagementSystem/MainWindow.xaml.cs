@@ -24,7 +24,7 @@ namespace SchoolManagementSystem
     public partial class MainWindow : Window
     {
         SchoolMSEntities1 dataEntities = new SchoolMSEntities1();
-        private readonly UserViewModel _viewModel;
+        private readonly EditProfileViewModel _viewModel;
 
 
         public MainWindow ()
@@ -32,19 +32,19 @@ namespace SchoolManagementSystem
             InitializeComponent();
 
 
-            _viewModel = new UserViewModel();
-            DataContext = _viewModel.user;
+            _viewModel = new EditProfileViewModel();
+            DataContext = _viewModel;
         }
 
         private void Window_Loaded ( object sender, RoutedEventArgs e )
         {
 
-            SchoolManagementSystem.SchoolMSDataSet schoolMSDataSet = ((SchoolManagementSystem.SchoolMSDataSet)(this.FindResource("schoolMSDataSet")));
+            //SchoolManagementSystem.SchoolMSDataSet schoolMSDataSet = ((SchoolManagementSystem.SchoolMSDataSet)(this.FindResource("schoolMSDataSet")));
             // Load data into the table Users. You can modify this code as needed.
-            SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter schoolMSDataSetUsersTableAdapter = new SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter();
-            schoolMSDataSetUsersTableAdapter.Fill(schoolMSDataSet.Users);
-            System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
-            usersViewSource.View.MoveCurrentToFirst();
+            //SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter schoolMSDataSetUsersTableAdapter = new SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter();
+            //schoolMSDataSetUsersTableAdapter.Fill(schoolMSDataSet.Users);
+            //System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
+            //usersViewSource.View.MoveCurrentToFirst();
         }
     }
 }
