@@ -38,6 +38,38 @@ namespace SchoolManagementSystem.ViewModels
         }
 
 
+        public void AddRooom(int RoomID,string RoomNum )
+        {
+
+            Room room = new Room();
+            room.RoomID = RoomID;
+            room.RoomNum = RoomNum;
+
+            ty.Rooms.Add(room);
+            ty.SaveChanges();
+
+        }
+
+
+        public void UpdateRoom(int RoomID, string RoomNum)
+        {
+
+            Room updateRoom = (from m in ty.Rooms where m.RoomID == RoomID select m).Single();
+            updateRoom.RoomID = RoomID;
+            updateRoom.RoomNum = RoomNum;
+            ty.SaveChanges();
+
+        }
+
+        public void DeleteRoom(int RoomID)
+        {
+
+            var deleteRoom = ty.Rooms.Where(m => m.RoomID == RoomID).Single();
+            ty.Rooms.Remove(deleteRoom);
+            ty.SaveChanges();
+
+        }
+
 
 
     }

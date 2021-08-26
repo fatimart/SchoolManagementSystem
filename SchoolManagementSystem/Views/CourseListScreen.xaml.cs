@@ -50,11 +50,11 @@ namespace SchoolManagementSystem.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-         //   System.Windows.Data.CollectionViewSource courseViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("courseViewSource")));
-          //  courseViewSource.View.MoveCurrentToFirst();
-           
+            //   System.Windows.Data.CollectionViewSource courseViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("courseViewSource")));
+            //  courseViewSource.View.MoveCurrentToFirst();
+
         }
-   
+
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
             course.AddCourse(courseNameTextBox.Text.Trim(), courseCodeTextBox.Text.Trim(), descriptionTextBox.Text.Trim(), Convert.ToDateTime(examDateDatePicker.Text), Convert.ToInt32(sectionIDTextBox.Text.Trim()));
@@ -98,7 +98,7 @@ namespace SchoolManagementSystem.Views
             {
                 MessageBox.Show("ID not existed");
             }
-          
+
         }
 
 
