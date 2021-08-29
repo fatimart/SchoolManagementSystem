@@ -19,7 +19,7 @@ namespace SchoolManagementSystem.Views
     /// <summary>
     /// Interaction logic for ProfileScreen.xaml
     /// </summary>
-    public partial class ProfileScreen : Window
+    public partial class ProfileScreen : Page
     {
         EditProfileViewModel editView = new EditProfileViewModel();
 
@@ -34,10 +34,13 @@ namespace SchoolManagementSystem.Views
         {
             string type = UserViewModel.userSession.Type.ToString();
 
-            if (type == "Admin" || type == "Admin")
+            /**if (type == "Admin" || type == "Admin")
             {
-                student_list.Visibility = Visibility.Hidden;
-            }
+                update_profile_Click.Visibility = Visibility.Hidden;
+            }**/
+
+            
+
         }
 
         private void logOut_Click ( object sender, RoutedEventArgs e )
@@ -49,20 +52,60 @@ namespace SchoolManagementSystem.Views
             MessageBox.Show(UserViewModel.userSession.UserID.ToString());
             LoginScreen dashboard = new LoginScreen();
             dashboard.Show();
-            this.Close();
+            //this.Close();
         }
 
-        private void student_list_Click ( object sender, RoutedEventArgs e )
+        private void update_profile_Click ( object sender, RoutedEventArgs e )
+        {
+            string pass = "";
+            if (txtnewPass.Text.Trim() == "")
+            {
+                pass = passwordTextBox.Text.Trim();
+            }
+            else
+            {
+                //i have set a new password
+                pass = txtnewPass.Text.Trim();
+            }
+
+            editView.UpdateUser(
+                                 Convert.ToInt32(userIDTextBox.Text.Trim()),
+                                      nameTextBox.Text.Trim(),
+                                      emailTextBox.Text.Trim(),
+                                      Convert.ToDecimal(cPRTextBox.Text),
+                                      addressTextBox.Text.Trim(),
+                                      Convert.ToDateTime(dOBDatePicker.Text),
+                                      pass,
+                                      contactNoTextBox.Text.Trim()
+                               );
+        }
+
+        private void Button_Click ( object sender, RoutedEventArgs e )
         {
             StudentsListScreen dashboard = new StudentsListScreen();
             dashboard.Show();
         }
 
+        /**
+            private void student_list_Click ( object sender, RoutedEventArgs e )
+            {
+               StudentsListScreen dashboard = new StudentsListScreen();
+               dashboard.Show();
+            }
 
-        private void Button_Click ( object sender, RoutedEventArgs e )
-        {
-            RegisterUsers dashboard = new RegisterUsers();
-            dashboard.Show();
-        }
+
+            private void Button_Click ( object sender, RoutedEventArgs e )
+            {
+               RegisterUsers dashboard = new RegisterUsers();
+               dashboard.Show();
+            }
+
+            private void student_list_Copy_Click ( object sender, RoutedEventArgs e )
+            {
+
+            }
+
+         **/
+
     }
 }

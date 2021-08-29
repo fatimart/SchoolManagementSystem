@@ -108,6 +108,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolMSDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CourseRegistrationViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\EditProfileViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
@@ -119,6 +120,9 @@
     <Compile Include="ViewModels\YearViewModel.cs" />
     <Compile Include="Views\CourseListScreen.xaml.cs">
       <DependentUpon>CourseListScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CourseRegistrationScreen.xaml.cs">
+      <DependentUpon>CourseRegistrationScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeScreen.xaml.cs">
       <DependentUpon>HomeScreen.xaml</DependentUpon>
@@ -138,6 +142,10 @@
     <Page Include="Views\CourseListScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CourseRegistrationScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomeScreen.xaml">
       <SubType>Designer</SubType>
@@ -239,9 +247,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Imgs\generaluser.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

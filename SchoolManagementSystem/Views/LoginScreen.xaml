@@ -7,16 +7,32 @@
         mc:Ignorable="d"
         Title="LoginScreen" Height="451.318" Width="803.9">
 
-    <Border Background="#2e3137" CornerRadius="20" Margin="20,20,0,0" HorizontalAlignment="Left" Width="255" Height="380" VerticalAlignment="Top">
-        <StackPanel Margin="20">
-            <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-            <Separator></Separator>
-            <Label Content="Username" Foreground="White"/>
-            <TextBox Name="txtUsername" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Label Content="Password" Foreground="White"/>
-            <PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button Name="btnSubmit" Click="btnSubmit_Click" Content="Submit" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
-        </StackPanel>
-    </Border>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="47*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="title" Content="School MS" HorizontalAlignment="Left" Margin="326,24,0,0" VerticalAlignment="Top" Width="124" Height="51" FontSize="24"/>
+        <GroupBox HorizontalAlignment="Left" Background="#FFF9F9F9" Height="301" Margin="67,71,0,0" VerticalAlignment="Top" Width="663" FontSize="16" BorderBrush="#FF8B8F91" Grid.RowSpan="2">
+            <GroupBox.Header>
+                Login
+            </GroupBox.Header>
+            <Grid OpacityMask="Gray" Margin="0,0,47,0">
+                <Label Content="Username:" HorizontalAlignment="Left" Margin="150,52,0,0" VerticalAlignment="Top" Width="130"/>
+                <TextBox Name="txtUsername" FontSize="18" Margin="337,52,118,183"/>
+                <Label x:Name="passLabel" Content="Password:" HorizontalAlignment="Left" Margin="150,114,0,0" VerticalAlignment="Top" Width="130"/>
+                <PasswordBox x:Name="txtPassword" FontSize="18" Margin="337,113,118,122"/>
+                <Button x:Name="btnSubmit" Click="btnSubmit_Click"  Content="Login" HorizontalAlignment="Left" Margin="337,182,0,0" VerticalAlignment="Top" Width="149" Height="37"/>
+
+            </Grid>
+        </GroupBox>
+
+
+
+    </Grid>
 
 </Window>
+    
+    
+    

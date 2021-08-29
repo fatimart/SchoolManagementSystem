@@ -24,7 +24,7 @@ namespace SchoolManagementSystem.Views
     /// Interaction logic for RegisterUsers.xaml
     /// </summary>
     /// 
-    public partial class RegisterUsers : Window
+    public partial class RegisterUsers : Page
     {
         
 
@@ -79,6 +79,7 @@ namespace SchoolManagementSystem.Views
 
         private void UpdateStudent_Click ( object sender, RoutedEventArgs e )
         {
+
             _userViewModel.UpdateUser(
                                       Convert.ToInt32(userIDTextBox.Text.Trim()),
                                       userNameTextBox.Text.Trim(),
