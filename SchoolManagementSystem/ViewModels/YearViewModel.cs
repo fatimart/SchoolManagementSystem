@@ -38,7 +38,41 @@ namespace SchoolManagementSystem.ViewModels
             }
         }
 
+        public void AddYear(int YearID, string YearNum)
+        {
 
-    
+            Year year = new Year();
+            year.YearID = YearID;
+            year.YearNum = YearNum;
+
+
+            ty.Years.Add(year);
+            ty.SaveChanges();
+
+        }
+
+
+        public void UpdateStudentGrade(int YearID, string YearNum)
+        {
+
+            Year updateYears = (from m in ty.Years where m.YearID == YearID select m).Single();
+            updateYears.YearID = YearID;
+            updateYears.YearNum = YearNum;
+
+            ty.SaveChanges();
+
+        }
+
+        public void DeleteYear(int YearID)
+        {
+
+            var deleteYears = ty.Years.Where(m => m.YearID == YearID).Single();
+            ty.Years.Remove(deleteYears);
+            ty.SaveChanges();
+
+        }
+
+
+
     }
 }

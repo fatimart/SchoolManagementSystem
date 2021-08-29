@@ -85,5 +85,51 @@ namespace SchoolManagementSystem.ViewModels
                 }
             }
         }
+
+
+        public void AddTimeTable(int CourseID, int SectionID, int RoomID, int YearID, int TimeTableID, string TeacherName)
+        {
+
+            TimeTable TTable = new TimeTable();
+            TTable.CourseID = CourseID;
+            TTable.SectionID = SectionID;
+            TTable.RoomID = RoomID;
+            TTable.YearID = YearID;
+            TTable.TimeTableID = TimeTableID;
+            TTable.TeacherName = TeacherName;
+       
+
+            ty.TimeTables.Add(TTable);
+            ty.SaveChanges();
+
+        }
+
+
+        public void UpdateTimeTable(int CourseID, int SectionID, int RoomID, int YearID, int TimeTableID, string TeacherName)
+        {
+
+            TimeTable updaTimeTables = (from m in ty.TimeTables where m.TimeTableID == TimeTableID select m).Single();
+            updaTimeTables.CourseID = CourseID;
+            updaTimeTables.SectionID = SectionID;
+            updaTimeTables.RoomID = RoomID;
+            updaTimeTables.YearID = YearID;
+            updaTimeTables.TimeTableID = TimeTableID;
+            updaTimeTables.TeacherName = TeacherName;
+            ty.SaveChanges();
+
+        }
+
+        public void DeleteTimeTable(int TimeTableID)
+        {
+
+            var deleteTimeTables = ty.TimeTables.Where(m => m.TimeTableID == TimeTableID).Single();
+            ty.TimeTables.Remove(deleteTimeTables);
+            ty.SaveChanges();
+
+        }
+
+
+
+
     }
 }

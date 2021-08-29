@@ -72,8 +72,10 @@ namespace SchoolManagementSystem.Views
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
             button3Clicked = true;
-        RegisterUsers dashboard = new RegisterUsers();
-            dashboard.Show();
+      //  RegisterUsers dashboard = new RegisterUsers();
+            GS.DataContext = new CourseListScreen();
+            //   dashboard.Show();
+            
             
         }
 
@@ -94,6 +96,12 @@ namespace SchoolManagementSystem.Views
             schoolMSDataSetCourseTableAdapter.Fill(schoolMSDataSet.Course);
             System.Windows.Data.CollectionViewSource courseViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("courseViewSource")));
             courseViewSource.View.MoveCurrentToFirst();
+        }
+
+        private void GridSplitter_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            button3Clicked = true;
+            DataContext = new CourseListScreen();
         }
     }
 }

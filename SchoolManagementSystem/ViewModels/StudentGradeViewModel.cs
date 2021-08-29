@@ -103,7 +103,50 @@ namespace SchoolManagementSystem.ViewModels
             }
         }
 
-    
+        public void AddStudentGrade(int ID, int CourseID, int StudentID, int Score, int Attendance, bool Done, int yearID)
+        {
+
+            StudentGrade SGrade = new StudentGrade();
+            SGrade.ID = ID;
+            SGrade.CourseID = CourseID;
+            SGrade.StudentID = StudentID;
+            SGrade.Score = Score;
+            SGrade.Attendance = Attendance;
+            SGrade.Done = Done;
+            SGrade.yearID = yearID;
+
+            ty.StudentGrades.Add(SGrade);
+            ty.SaveChanges();
+
+        }
+
+
+        public void UpdateStudentGrade(int ID, int CourseID, int StudentID, int Score, int Attendance, bool Done, int yearID)
+        {
+
+            StudentGrade updateSGrade = (from m in ty.StudentGrades where m.ID == ID select m).Single();
+            updateSGrade.ID = ID;
+            updateSGrade.CourseID = CourseID;
+            updateSGrade.StudentID = StudentID;
+            updateSGrade.Score = Score;
+            updateSGrade.Attendance = Attendance;
+            updateSGrade.Done = Done;
+            updateSGrade.yearID = yearID;
+            ty.SaveChanges();
+
+        }
+
+        public void DeleteSection(int ID)
+        {
+
+            var deleteStudentGrade = ty.StudentGrades.Where(m => m.ID == ID).Single();
+            ty.StudentGrades.Remove(deleteStudentGrade);
+            ty.SaveChanges();
+
+        }
+
+
+
 
     }
 }

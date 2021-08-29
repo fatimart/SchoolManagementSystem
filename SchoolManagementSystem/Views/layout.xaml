@@ -428,5 +428,8 @@
                   VerticalAlignment="Bottom"
                   Background="#233C4F"/>
 
+        <GridSplitter HorizontalAlignment="Left" Height="427" Margin="70,85,0,0" VerticalAlignment="Top" Width="722" DragDelta="GridSplitter_DragDelta" Name="GS">
+
+        </GridSplitter>
     </Grid>
 </Window>
