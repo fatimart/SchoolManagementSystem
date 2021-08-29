@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SchoolManagementSystem.Views
@@ -19,9 +20,14 @@ namespace SchoolManagementSystem.Views
     /// </summary>
     public partial class layout : Window
     {
+       // CourseListScreen CList = new CourseListScreen();
+        RegisterUsers RScreen = new RegisterUsers();
+
         public layout()
         {
             InitializeComponent();
+           // pages.Content = RScreen;
+
         }
 
         public bool button3Clicked=false;
@@ -71,12 +77,12 @@ namespace SchoolManagementSystem.Views
         }
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
-            button3Clicked = true;
-      //  RegisterUsers dashboard = new RegisterUsers();
-            GS.DataContext = new CourseListScreen();
+            pages.Source = new Uri("RegisterUsers.xaml", UriKind.Relative);
+            //   pages.Navigate(new Uri("RegisterUsers.xaml", UriKind.Relative));
+            //  RegisterUsers dashboard = new RegisterUsers()
             //   dashboard.Show();
-            
-            
+
+
         }
 
        
@@ -102,6 +108,11 @@ namespace SchoolManagementSystem.Views
         {
             button3Clicked = true;
             DataContext = new CourseListScreen();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            pages.Source = new Uri("RoomScreen.xaml", UriKind.Relative);
         }
     }
 }

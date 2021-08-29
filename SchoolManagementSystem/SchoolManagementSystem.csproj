@@ -127,6 +127,15 @@
     <Compile Include="Views\RegisterUsers.xaml.cs">
       <DependentUpon>RegisterUsers.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RoomScreen.xaml.cs">
+      <DependentUpon>RoomScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SectionScreen.xaml.cs">
+      <DependentUpon>SectionScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentGradeScreen.xaml.cs">
+      <DependentUpon>StudentGradeScreen.xaml</DependentUpon>
+    </Compile>
     <Page Include="PopupUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +171,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\RegisterUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RoomScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SectionScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentGradeScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

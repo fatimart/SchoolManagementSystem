@@ -22,7 +22,7 @@ namespace SchoolManagementSystem.Views
     /// <summary>
     /// Interaction logic for RegisterUsers.xaml
     /// </summary>
-    public partial class RegisterUsers : Window
+    public partial class RegisterUsers : Page
     {
         
 

@@ -13,7 +13,7 @@
         Width="800"
         Topmost="True"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded_1">
+        WindowStartupLocation="CenterScreen"  Loaded="Window_Loaded_1">
     <Window.Resources>
         <DataTemplate x:Name="register" DataType="{x:Type Views:CourseListScreen}"/>
         <SchoolManagementSystem:SchoolMSDataSet x:Key="schoolMSDataSet"/>
@@ -311,15 +311,15 @@
 
                         <StackPanel Orientation="Horizontal"
                                         Width="230">
-
-                            <Image Source="/Assets/img_message.png"
+                            <Button Click="Button_Click_1">
+                                <Image Source="/Assets/img_message.png"
                                        Stretch="None"
                                        Margin="12,0,0,0"/>
-
+                            </Button>
                             <TextBlock Text="Messages"
                                            Margin="25,0,0,0"
                                          FontFamily="open sans condensed" />
-
+                           
                         </StackPanel>
 
                     </ListViewItem>
@@ -427,9 +427,8 @@
         <Grid Height="80"
                   VerticalAlignment="Bottom"
                   Background="#233C4F"/>
+        <Frame  HorizontalAlignment="Left" Height="422" Margin="70,85,0,0" VerticalAlignment="Top" Width="722" Name="pages" />
 
-        <GridSplitter HorizontalAlignment="Left" Height="427" Margin="70,85,0,0" VerticalAlignment="Top" Width="722" DragDelta="GridSplitter_DragDelta" Name="GS">
 
-        </GridSplitter>
     </Grid>
 </Window>

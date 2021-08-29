@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SchoolManagementSystem.ViewModels
 {
@@ -103,19 +104,18 @@ namespace SchoolManagementSystem.ViewModels
             }
         }
 
-        public void AddStudentGrade(int ID, int CourseID, int StudentID, int Score, int Attendance, bool Done, int yearID)
+        public void AddStudentGrade( int CourseID, int StudentID, int Score, int Attendance, bool Done, int yearID)
         {
 
-            StudentGrade SGrade = new StudentGrade();
-            SGrade.ID = ID;
-            SGrade.CourseID = CourseID;
-            SGrade.StudentID = StudentID;
-            SGrade.Score = Score;
-            SGrade.Attendance = Attendance;
-            SGrade.Done = Done;
-            SGrade.yearID = yearID;
+            StudentGrade SGrade1 = new StudentGrade();
+            SGrade1.CourseID = CourseID;
+            SGrade1.StudentID = StudentID;
+            SGrade1.Score = Score;
+            SGrade1.Attendance = Attendance;
+            SGrade1.Done = Done;
+            SGrade1.yearID = yearID;
 
-            ty.StudentGrades.Add(SGrade);
+            ty.StudentGrades.Add(SGrade1);
             ty.SaveChanges();
 
         }
@@ -136,7 +136,7 @@ namespace SchoolManagementSystem.ViewModels
 
         }
 
-        public void DeleteSection(int ID)
+        public void deleteStudentGrade(int ID)
         {
 
             var deleteStudentGrade = ty.StudentGrades.Where(m => m.ID == ID).Single();
@@ -144,8 +144,21 @@ namespace SchoolManagementSystem.ViewModels
             ty.SaveChanges();
 
         }
+        public bool CheckSGID(int ID)
+        {
+            try
+            {
+                var SGID = ty.StudentGrades.Where(m => m.ID == ID).Single();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
 
-
+        }
+    
 
 
     }

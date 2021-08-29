@@ -1,4 +1,4 @@
-﻿<Window
+﻿<Page
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:SchoolManagementSystem.Views"
         xmlns:SchoolManagementSystem="clr-namespace:SchoolManagementSystem" x:Class="SchoolManagementSystem.Views.RegisterUsers"
         mc:Ignorable="d"
-        Title="RegisterUsers" Height="515" Width="800" Loaded="Window_Loaded">
-    <Window.Resources>
+        Title="RegisterUsers" Height="422"  VerticalAlignment="Top" Width="722" Loaded="Window_Loaded">
+    <Page.Resources>
         <SchoolManagementSystem:SchoolMSDataSet x:Key="schoolMSDataSet"/>
         <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource schoolMSDataSet}}"/>
-    </Window.Resources>
+    </Page.Resources>
     <Grid>
         <TabControl SelectedIndex="{Binding Mode=OneWay}">
             <TabItem Header=" Students">
@@ -171,8 +171,16 @@
                 </Grid>
 
             </TabItem>
+            <TabItem Header="RoomScreen">
+                <Frame Name="room" Source="RoomScreen.xaml" Margin="0,0,0,0"/>
+            </TabItem>
+            
+            <TabItem Header="StudentGrade">
+                <Frame Name="Sgrades" Source="StudentGradeScreen.xaml" Margin="0,0,0,0"/>
+            </TabItem>
+
 
         </TabControl>
     </Grid>
 
-</Window>
+</Page>

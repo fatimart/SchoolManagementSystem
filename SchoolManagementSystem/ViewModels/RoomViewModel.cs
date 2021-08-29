@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SchoolManagementSystem.ViewModels
 {
@@ -38,11 +39,10 @@ namespace SchoolManagementSystem.ViewModels
         }
 
 
-        public void AddRooom(int RoomID,string RoomNum )
+        public void AddRoom(string RoomNum)
         {
 
             Room room = new Room();
-            room.RoomID = RoomID;
             room.RoomNum = RoomNum;
 
             ty.Rooms.Add(room);
@@ -67,6 +67,20 @@ namespace SchoolManagementSystem.ViewModels
             var deleteRoom = ty.Rooms.Where(m => m.RoomID == RoomID).Single();
             ty.Rooms.Remove(deleteRoom);
             ty.SaveChanges();
+
+        }
+        public bool CheckRoomID(int roomID)
+        {
+            try
+            {
+                var RoomID = ty.Rooms.Where(m => m.RoomID == roomID).Single();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
 
         }
 
