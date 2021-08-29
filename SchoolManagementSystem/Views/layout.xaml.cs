@@ -24,7 +24,8 @@ namespace SchoolManagementSystem.Views
             InitializeComponent();
         }
 
-     
+        public bool button3Clicked=false;
+
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             // Set tooltip visibility
@@ -70,8 +71,29 @@ namespace SchoolManagementSystem.Views
         }
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
-            RegisterUsers dashboard = new RegisterUsers();
+            button3Clicked = true;
+        RegisterUsers dashboard = new RegisterUsers();
             dashboard.Show();
+            
+        }
+
+       
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+ 
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+            SchoolManagementSystem.SchoolMSDataSet schoolMSDataSet = ((SchoolManagementSystem.SchoolMSDataSet)(this.FindResource("schoolMSDataSet")));
+            // Load data into the table Course. You can modify this code as needed.
+            SchoolManagementSystem.SchoolMSDataSetTableAdapters.CourseTableAdapter schoolMSDataSetCourseTableAdapter = new SchoolManagementSystem.SchoolMSDataSetTableAdapters.CourseTableAdapter();
+            schoolMSDataSetCourseTableAdapter.Fill(schoolMSDataSet.Course);
+            System.Windows.Data.CollectionViewSource courseViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("courseViewSource")));
+            courseViewSource.View.MoveCurrentToFirst();
         }
     }
 }
