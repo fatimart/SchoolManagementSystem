@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SchoolManagementSystem.ViewModels
 {
@@ -87,7 +88,7 @@ namespace SchoolManagementSystem.ViewModels
         }
 
 
-        public void AddTimeTable(int CourseID, int SectionID, int RoomID, int YearID, int TimeTableID, string TeacherName)
+        public void AddTimeTable(int CourseID, int SectionID, int RoomID, int YearID,  string TeacherName)
         {
 
             TimeTable TTable = new TimeTable();
@@ -95,7 +96,6 @@ namespace SchoolManagementSystem.ViewModels
             TTable.SectionID = SectionID;
             TTable.RoomID = RoomID;
             TTable.YearID = YearID;
-            TTable.TimeTableID = TimeTableID;
             TTable.TeacherName = TeacherName;
        
 
@@ -125,6 +125,20 @@ namespace SchoolManagementSystem.ViewModels
             var deleteTimeTables = ty.TimeTables.Where(m => m.TimeTableID == TimeTableID).Single();
             ty.TimeTables.Remove(deleteTimeTables);
             ty.SaveChanges();
+
+        }
+        public bool CheckTimeTableID(int TimeTableID)
+        {
+            try
+            {
+                var TTableID = ty.TimeTables.Where(m => m.TimeTableID == TimeTableID).Single();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
 
         }
 
