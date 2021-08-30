@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagementSystem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace SchoolManagementSystem.Views
     /// </summary>
     public partial class TimeTableScreen : Page
     {
+        TimeTableViewModel TimeTable = new TimeTableViewModel();
         public TimeTableScreen()
         {
             InitializeComponent();
