@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SchoolManagementSystem.ViewModels
 {
@@ -38,11 +39,10 @@ namespace SchoolManagementSystem.ViewModels
             }
         }
 
-        public void AddYear(int YearID, string YearNum)
+        public void AddYear(string YearNum)
         {
 
             Year year = new Year();
-            year.YearID = YearID;
             year.YearNum = YearNum;
 
 
@@ -52,7 +52,7 @@ namespace SchoolManagementSystem.ViewModels
         }
 
 
-        public void UpdateStudentGrade(int YearID, string YearNum)
+        public void UpdateYear(int YearID, string YearNum)
         {
 
             Year updateYears = (from m in ty.Years where m.YearID == YearID select m).Single();
@@ -69,6 +69,20 @@ namespace SchoolManagementSystem.ViewModels
             var deleteYears = ty.Years.Where(m => m.YearID == YearID).Single();
             ty.Years.Remove(deleteYears);
             ty.SaveChanges();
+
+        }
+        public bool CheckYearID(int roomID)
+        {
+            try
+            {
+                var RoomID = ty.Years.Where(m => m.YearID == YearID).Single();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
 
         }
 

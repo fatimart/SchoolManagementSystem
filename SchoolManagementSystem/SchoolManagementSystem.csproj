@@ -136,6 +136,9 @@
     <Compile Include="Views\StudentGradeScreen.xaml.cs">
       <DependentUpon>StudentGradeScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\YearScreen.xaml.cs">
+      <DependentUpon>YearScreen.xaml</DependentUpon>
+    </Compile>
     <Page Include="PopupUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StudentGradeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\YearScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
