@@ -1,6 +1,7 @@
 ﻿using SchoolManagementSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,6 +17,22 @@ namespace SchoolManagementSystem.ViewModels
         public User user;
 
         private SchoolMSEntities1 ty = new SchoolMSEntities1();
+        //public ObservableCollection<User> AllUsers { get; private set; }
+
+        private ObservableCollection<User> _allStudents;
+        public ObservableCollection<User> AllUsers
+        {
+            get
+            {
+                return _allStudents;
+            }
+            set
+            {
+                _allStudents = value;
+                OnPropertyChanged("AllUsers");
+            }
+        }
+
         public int UserID
         {
             get { return user.UserID; }
@@ -184,9 +201,45 @@ namespace SchoolManagementSystem.ViewModels
             }
         }**/
 
+        public StudentListViewModel ()
+        {
+
+            GetAll();
+        }
+
+
+
+        public List<User> GetAll1 ()
+        {
+            return ty.Users.ToList();
+        }
+
+        public ObservableCollection<User> GetAll ()
+        {
+            AllUsers = new ObservableCollection<User>();
+            GetAll1().ForEach(data => AllUsers.Add(new User()
+            {
+                UserID = Convert.ToInt32(data.UserID),
+                UserName = data.UserName,
+                Name = data.Name,
+                Email = data.Email,
+                CPR = Convert.ToDecimal(data.CPR),
+                Address = data.Address,
+                DOB = Convert.ToDateTime(data.DOB),
+                Type = data.Type,
+                Password = data.Password,
+                ContactNo = data.ContactNo
+
+            }));
+
+            return AllUsers;
+
+        }
+
 
         public void InsertUser ( string username, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
         {
+
             try
             {
                 User user1 = new User();
@@ -241,6 +294,11 @@ namespace SchoolManagementSystem.ViewModels
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    GetAll();
+                    ResetData();
                 }
             }
             else
@@ -298,10 +356,10 @@ namespace SchoolManagementSystem.ViewModels
 
             user1.Name = string.Empty;
             user1.UserID = 0;
-            user1.UserName = string.Empty; 
-            user1.Email = string.Empty; 
+            user1.UserName = string.Empty;
+            user1.Email = string.Empty;
             user1.CPR = 0;
-            user1.Address = string.Empty; 
+            user1.Address = string.Empty;
             user1.Type = "Student";
             user1.Password = string.Empty;
             user1.ContactNo = string.Empty;
