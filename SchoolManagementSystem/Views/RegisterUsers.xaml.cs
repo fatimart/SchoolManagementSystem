@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -48,6 +47,11 @@ namespace SchoolManagementSystem.Views
 
             SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter schoolMSDataSetUsersTableAdapter = new SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter();
             schoolMSDataSetUsersTableAdapter.Fill(schoolMSDataSet.Users);
+            //  MessageBox.Show('"' + Application.Current.Resources["UserName"] + '"');
+            //MARK: to not have them in the textboX
+            //System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
+            //usersViewSource.View.MoveCurrentToFirst();
+
         }
 
         public void Load ()

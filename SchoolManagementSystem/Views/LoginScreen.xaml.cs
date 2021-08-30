@@ -41,6 +41,9 @@ namespace SchoolManagementSystem
 
                 StudentsListScreen dashboard = new StudentsListScreen();
                 dashboard.Show();
+              
+                layout dashboard1 = new layout();
+                dashboard1.Show();
                 this.Close();
             }
         }

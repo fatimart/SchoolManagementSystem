@@ -255,12 +255,20 @@ namespace SchoolManagementSystem.ViewModels
 
 
                         }
+                        //MessageBox.Show(userSession.UserName);
+                      //  MessageBox.Show(Application.Current.Resources["UserName"].ToString());
+                      //  MessageBox.Show(Usersession.UserName);
+                        reader.Close();
+                        //MessageBox.Show(userSession.UserName);
+                        MessageBox.Show( Application.Current.Resources["UserID"].ToString());
 
                         reader.Close();
                         //MessageBox.Show(userSession.UserName);
                         MessageBox.Show( Application.Current.Resources["UserID"].ToString());
 
                         return true;
+                    
+                 
                     }
                     else
                     {
@@ -322,6 +330,8 @@ namespace SchoolManagementSystem.ViewModels
                 MessageBox.Show(ex.Message);
             }
         }
+
+    
 
         public void UpdateUser ( int userID, string username, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
         {
@@ -531,8 +541,6 @@ namespace SchoolManagementSystem.ViewModels
             }
 }
             **/
-
-
 
 
     }
