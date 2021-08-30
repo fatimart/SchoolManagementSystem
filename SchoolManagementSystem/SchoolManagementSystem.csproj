@@ -111,21 +111,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolMSDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CourseRegistrationViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
+    <Compile Include="ViewModels\EditProfileViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
     <Compile Include="ViewModels\StudentGradeViewModel.cs" />
+    <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\TimeTableViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\YearViewModel.cs" />
     <Compile Include="Views\CourseListScreen.xaml.cs">
       <DependentUpon>CourseListScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CourseRegistrationScreen.xaml.cs">
+      <DependentUpon>CourseRegistrationScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\layout.xaml.cs">
       <DependentUpon>layout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProfileScreen.xaml.cs">
+      <DependentUpon>ProfileScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterUsers.xaml.cs">
       <DependentUpon>RegisterUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentsListScreen.xaml.cs">
+      <DependentUpon>StudentsListScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherListScreen.xaml.cs">
+      <DependentUpon>TeacherListScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RoomScreen.xaml.cs">
       <DependentUpon>RoomScreen.xaml</DependentUpon>
@@ -149,6 +164,10 @@
     <Page Include="Views\CourseListScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CourseRegistrationScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\layout.xaml">
       <SubType>Designer</SubType>
@@ -176,7 +195,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ProfileScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RegisterUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentsListScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeacherListScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,9 +305,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Imgs\generaluser.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

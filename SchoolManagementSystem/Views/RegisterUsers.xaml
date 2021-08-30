@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:SchoolManagementSystem.Views"
         xmlns:SchoolManagementSystem="clr-namespace:SchoolManagementSystem" x:Class="SchoolManagementSystem.Views.RegisterUsers"
         mc:Ignorable="d"
-        Title="RegisterUsers" Height="422"  VerticalAlignment="Top" Width="722" Loaded="Window_Loaded">
+        Title="RegisterUsers" Height="515" Width="800" Loaded="Window_Loaded">
     <Page.Resources>
         <SchoolManagementSystem:SchoolMSDataSet x:Key="schoolMSDataSet"/>
         <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource schoolMSDataSet}}"/>
     </Page.Resources>
-    <Grid>
+    <Grid DataContext="{StaticResource usersViewSource}">
         <TabControl SelectedIndex="{Binding Mode=OneWay}">
             <TabItem Header=" Students">
 
@@ -28,7 +28,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid x:Name="grid1" DataContext="{StaticResource usersViewSource}" VerticalAlignment="Top" Grid.Row="2" Margin="84,24,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="5">
+                    <Grid x:Name="grid1" VerticalAlignment="Top" Grid.Row="2" Margin="84,24,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -68,12 +68,12 @@
 
                     <DataGrid x:Name="usersDataGrid" DataContext="{StaticResource usersViewSource}" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="139,33,10,21" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="2" Grid.Column="4" SelectionChanged="usersDataGrid_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="userIDColumn" Binding="{Binding UserID}" Header="User ID" IsReadOnly="True" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="userNameColumn" Binding="{Binding UserName}" Header="User Name" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="emailColumn" Binding="{Binding Email}" Header="Email" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="cPRColumn" Binding="{Binding CPR}" Header="CPR" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="addressColumn" Binding="{Binding Address}" Header="Address" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="userIDColumn" Binding="{Binding UserID, UpdateSourceTrigger=PropertyChanged}" Header="User ID" IsReadOnly="True" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="userNameColumn" Binding="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Header="User Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="emailColumn" Binding="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Header="Email" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="cPRColumn" Binding="{Binding CPR, UpdateSourceTrigger=PropertyChanged}" Header="CPR" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="addressColumn" Binding="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Header="Address" Width="SizeToHeader"/>
                             <DataGridTemplateColumn x:Name="dOBColumn" Header="DOB" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -86,9 +86,9 @@
                             <DataGridTextColumn x:Name="contactNoColumn" Binding="{Binding ContactNo}" Header="Contact No" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="DeleteStudent" Content="DELETE" Margin="49,0,0,21" Grid.Row="2" RenderTransformOrigin="1.426,1" HorizontalAlignment="Left" Width="68" Grid.Column="4" Height="28" VerticalAlignment="Bottom" Click="DeleteStudent_Click"/>
-                    <Button x:Name="UpdateStudent" Content="UPDATE" Margin="18,407,587,21" Grid.Row="2" RenderTransformOrigin="1.426,1" Grid.Column="2" Click="UpdateStudent_Click" Grid.ColumnSpan="3"/>
-                    <Button x:Name="AddNewStudent" Content="INSERT" Margin="58,407,0,21" Grid.Row="2" RenderTransformOrigin="1.426,1" Click="AddNewStudent_Click" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="68"/>
+                    <Button x:Name="DeleteStudent" Content="DELETE" Margin="55,0,0,54" Grid.Row="2" RenderTransformOrigin="1.426,1" HorizontalAlignment="Left" Width="62" Grid.Column="4" Height="26" VerticalAlignment="Bottom" Click="DeleteStudent_Click"/>
+                    <Button x:Name="UpdateStudent" Content="UPDATE" Margin="18,407,587,54" Grid.Row="2" RenderTransformOrigin="1.426,1" Grid.Column="2" Click="UpdateStudent_Click" Grid.ColumnSpan="3"/>
+                    <Button x:Name="AddNewStudent" Content="INSERT" Margin="58,407,0,54" Grid.Row="2" RenderTransformOrigin="1.426,1" Click="AddNewStudent_Click" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="68"/>
                 </Grid>
 
             </TabItem>
@@ -104,7 +104,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid x:Name="gridt" VerticalAlignment="Top" Grid.Row="2" Margin="47,42,0,0" HorizontalAlignment="Left" DataContext="{StaticResource usersViewSource}" Grid.ColumnSpan="2" Grid.Column="1">
+                    <Grid x:Name="gridt" VerticalAlignment="Top" Grid.Row="2" Margin="47,42,0,0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
