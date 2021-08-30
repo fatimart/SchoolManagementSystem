@@ -39,9 +39,8 @@ namespace SchoolManagementSystem
             if(userViewModel.login(txtUsername.Text.Trim(), txtPassword.Password.ToString()))
             {
 
-              
-                layout dashboard1 = new layout();
-                dashboard1.Show();
+                StudentsListScreen dashboard = new StudentsListScreen();
+                dashboard.Show();
                 this.Close();
             }
         }

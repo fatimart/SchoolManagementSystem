@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:SchoolManagementSystem.Views"
         xmlns:SchoolManagementSystem="clr-namespace:SchoolManagementSystem" x:Class="SchoolManagementSystem.Views.CourseListScreen"
         mc:Ignorable="d"
-        Title="CourseListScreen" Height="422" Margin="70,85,0,0" VerticalAlignment="Top" Width="722" Loaded="Window_Loaded">
-    <Page.Resources>
+        Title="CourseListScreen" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
         <SchoolManagementSystem:SchoolMSDataSet x:Key="schoolMSDataSet"/>
         <CollectionViewSource x:Key="courseViewSource" Source="{Binding Course, Source={StaticResource schoolMSDataSet}}"/>
-    </Page.Resources>
+    </Window.Resources>
     <Grid DataContext="{StaticResource courseViewSource}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="53*"/>
             <ColumnDefinition Width="343*"/>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="courseListView" SelectionMode="Single" Margin="0,0,322,0" ItemsSource="{Binding}" Grid.ColumnSpan="2">
+        <ListView x:Name="courseListView" SelectionMode="Single" Margin="0,0,392,219" ItemsSource="{Binding}" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="courseIDColumn" Width="80" Header="Course ID">
@@ -104,4 +104,4 @@
         <Button Content="delete" HorizontalAlignment="Left" Margin="553,246,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click4" Grid.Column="1"/>
 
     </Grid>
-</Page>
+</Window>

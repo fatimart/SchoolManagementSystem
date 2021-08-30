@@ -60,41 +60,7 @@ namespace SchoolManagementSystem.ViewModels
                 }
             }
         }
-        public void AddSection(int sectionID, byte sectionNum, int courseID, int RoomID)
-        {
 
-            Section section = new Section();
-            section.SectionID = sectionID;
-            section.SectionNum = sectionNum;
-            section.CourseID = courseID;
-            section.RoomID = RoomID;
-
-            ty.Sections.Add(section);
-            ty.SaveChanges();
-
-        }
-
-
-        public void UpdateSection(int sectionID, byte sectionNum, int courseID, int RoomID)
-        {
-
-            Section updateSection = (from m in ty.Sections where m.SectionID == sectionID select m).Single();
-            updateSection.SectionID = sectionID;
-            updateSection.SectionNum = sectionNum;
-            updateSection.CourseID = courseID;
-            updateSection.RoomID = RoomID;
-            ty.SaveChanges();
-
-        }
-
-        public void DeleteSection(int sectionID)
-        {
-
-            var deleteSection = ty.Sections.Where(m => m.SectionID == sectionID).Single();
-            ty.Sections.Remove(deleteSection);
-            ty.SaveChanges();
-
-        }
 
 
 

@@ -21,18 +21,12 @@ namespace SchoolManagementSystem.Views
     /// <summary>
     /// Interaction logic for CourseListScreen.xaml
     /// </summary>
-    public partial class CourseListScreen : Page
+    public partial class CourseListScreen : Window
     {
         CourseViewModel course = new CourseViewModel();
-        private readonly CourseViewModel courseViewModel ;
         public CourseListScreen()
         {
             InitializeComponent();
-               courseViewModel = new CourseViewModel();
-
-            // The DataContext serves as the starting point of Binding Paths
-            DataContext = courseViewModel;
-
 
         }
 
@@ -56,21 +50,28 @@ namespace SchoolManagementSystem.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //   System.Windows.Data.CollectionViewSource courseViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("courseViewSource")));
-            //  courseViewSource.View.MoveCurrentToFirst();
-
+         //   System.Windows.Data.CollectionViewSource courseViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("courseViewSource")));
+          //  courseViewSource.View.MoveCurrentToFirst();
+           
         }
-
+   
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            //add button 
             course.AddCourse(courseNameTextBox.Text.Trim(), courseCodeTextBox.Text.Trim(), descriptionTextBox.Text.Trim(), Convert.ToDateTime(examDateDatePicker.Text), Convert.ToInt32(sectionIDTextBox.Text.Trim()));
             Load();
-        }
-        public void Clear()
-        {
 
+            /* SchoolMSEntities1 ty = new SchoolMSEntities1();
+             Course course = new Course();
+             course.CourseName = courseNameTextBox.Text.Trim();
+             course.CourseCode = courseCodeTextBox.Text.Trim();
+             course.Description = descriptionTextBox.Text.Trim();
+             course.ExamDate = Convert.ToDateTime(examDateDatePicker.Text);
+             course.SectionID = Convert.ToInt32(sectionIDTextBox.Text.Trim());
+
+             ty.Courses.Add(course);
+             ty.SaveChanges(); */
         }
+
         private void Button_Clear(object sender, RoutedEventArgs e)
         {
             course.Clear();
@@ -78,29 +79,16 @@ namespace SchoolManagementSystem.Views
 
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
-            if (course.CheckCourseID(Convert.ToInt32(courseIDTextBox.Text)))
-            {
-
-                course.UpdateCourse(Convert.ToInt32(courseIDTextBox.Text.Trim()), courseNameTextBox.Text.Trim(), courseCodeTextBox.Text.Trim(), descriptionTextBox.Text.Trim(), Convert.ToDateTime(examDateDatePicker.Text), Convert.ToInt32(sectionIDTextBox.Text.Trim()));
-                Load();
-
-            }
-
-            else
-            {
-                MessageBox.Show("ID not existed");
-            }
-
-
+            course.UpdateCourse(Convert.ToInt32(courseIDTextBox.Text.Trim()), courseNameTextBox.Text.Trim(), courseCodeTextBox.Text.Trim(), descriptionTextBox.Text.Trim(), Convert.ToDateTime(examDateDatePicker.Text), Convert.ToInt32(sectionIDTextBox.Text.Trim()));
+            Load();
         }
 
         private void Button_Click4(object sender, RoutedEventArgs e)
         {
-            //delete button 
-            if (course.CheckCourseID(Convert.ToInt32(courseIDTextBox.Text)))
+            if (course.CheckCourseID(Convert.ToInt32(courseIDTextBox.Text.Trim())))
             {
 
-                course.DeleteCourse(Convert.ToInt32(courseIDTextBox.Text));
+                course.DeleteCourse(Convert.ToInt32(courseIDTextBox.Text.Trim()));
                 Load();
 
             }
@@ -110,7 +98,7 @@ namespace SchoolManagementSystem.Views
             {
                 MessageBox.Show("ID not existed");
             }
-
+          
         }
 
 

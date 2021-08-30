@@ -11,7 +11,6 @@
         <SchoolManagementSystem:SchoolMSDataSet x:Key="schoolMSDataSet"/>
         <CollectionViewSource x:Key="usersViewSource" Source="{Binding Users, Source={StaticResource schoolMSDataSet}}"/>
     </Page.Resources>
-
     <Grid DataContext="{StaticResource usersViewSource}">
         <TabControl SelectedIndex="{Binding Mode=OneWay}">
             <TabItem Header=" Students">
@@ -172,14 +171,6 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="RoomScreen">
-                <Frame Name="room" Source="RoomScreen.xaml" Margin="0,0,0,0"/>
-            </TabItem>
-            
-            <TabItem Header="StudentGrade">
-                <Frame Name="Sgrades" Source="StudentGradeScreen.xaml" Margin="0,0,0,0"/>
-            </TabItem>
-
 
         </TabControl>
     </Grid>
