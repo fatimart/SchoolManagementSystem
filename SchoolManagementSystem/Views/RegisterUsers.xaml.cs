@@ -22,38 +22,37 @@ namespace SchoolManagementSystem.Views
     /// <summary>
     /// Interaction logic for RegisterUsers.xaml
     /// </summary>
+
     public partial class RegisterUsers : Page
     {
         
 
-        private readonly UserViewModel _userViewModel;
-        SchoolMSEntities1 dataEntities = new SchoolMSEntities1();
+        UserViewModel _userViewModel = new UserViewModel();
+
         public RegisterUsers ()
         {
             InitializeComponent();
-            _userViewModel = new UserViewModel();
 
             // The DataContext serves as the starting point of Binding Paths
-            DataContext = _userViewModel;
+            //DataContext = _userViewModel;
         }
 
 
         private void Window_Loaded ( object sender, RoutedEventArgs e )
         {
 
+
             SchoolManagementSystem.SchoolMSDataSet schoolMSDataSet = ((SchoolManagementSystem.SchoolMSDataSet)(this.FindResource("schoolMSDataSet")));
             // Load data into the table Users. You can modify this code as needed.
+
             SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter schoolMSDataSetUsersTableAdapter = new SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter();
             schoolMSDataSetUsersTableAdapter.Fill(schoolMSDataSet.Users);
-            //  MessageBox.Show('"' + Application.Current.Resources["UserName"] + '"');
-            //MARK: to not have them in the textboX
-            //System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
-            //usersViewSource.View.MoveCurrentToFirst();
 
         }
 
         public void Load ()
         {
+            
             Clear();
             SchoolManagementSystem.SchoolMSDataSet schoolMSDataSet = ((SchoolManagementSystem.SchoolMSDataSet)(this.FindResource("schoolMSDataSet")));
             // Load data into the table Users. You can modify this code as needed.
@@ -80,6 +79,7 @@ namespace SchoolManagementSystem.Views
 
         private void UpdateStudent_Click ( object sender, RoutedEventArgs e )
         {
+
             _userViewModel.UpdateUser(
                                       Convert.ToInt32(userIDTextBox.Text.Trim()),
                                       userNameTextBox.Text.Trim(),
@@ -143,14 +143,17 @@ namespace SchoolManagementSystem.Views
             tcontactNoTextBox.Text = "";
         }
 
+        private void DeleteStudent_Click ( object sender, RoutedEventArgs e )
+        {
+            _userViewModel.DeleteUser(Convert.ToInt32(tuserIDTextBox.Text.Trim()));
+            Load();
+        }
+
         private void usersDataGrid_SelectionChanged ( object sender, SelectionChangedEventArgs e )
         {
 
         }
 
-        private void DeleteStudent_Click ( object sender, RoutedEventArgs e )
-        {
 
-        }
     }
 }
