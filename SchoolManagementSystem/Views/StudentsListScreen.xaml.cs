@@ -30,8 +30,7 @@ namespace SchoolManagementSystem.Views
         public StudentsListScreen ()
         {
             InitializeComponent();
-            DataContext = _userViewModel.user;
-            FillDataGrid();
+            DataContext = _userViewModel;
         }
 
         public void Load()
@@ -112,7 +111,9 @@ namespace SchoolManagementSystem.Views
 
         public void Clear ()
         {
-           // _userViewModel.ResetData();
+           
+
+            // _userViewModel.ResetData();
 
             userIDTextBox.Text = "";
             userNameTextBox.Text = "";
@@ -158,7 +159,11 @@ namespace SchoolManagementSystem.Views
 
         private void Reset_Click ( object sender, RoutedEventArgs e )
         {
+           /** foreach (var user in _userViewModel.GetAll())
+            {
+                MessageBox.Show(user.Address);
 
+            }**/
         }
     }
 }

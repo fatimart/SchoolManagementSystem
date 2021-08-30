@@ -17,10 +17,9 @@ namespace SchoolManagementSystem.ViewModels
         public User user;
 
         private SchoolMSEntities1 ty = new SchoolMSEntities1();
-        //public ObservableCollection<User> AllUsers { get; private set; }
+        public ObservableCollection<User> AllUsers { get; private set; }
 
-        private ObservableCollection<User> _allStudents;
-        public ObservableCollection<User> AllUsers
+/**        public ObservableCollection<User> AllUsers
         {
             get
             {
@@ -31,7 +30,9 @@ namespace SchoolManagementSystem.ViewModels
                 _allStudents = value;
                 OnPropertyChanged("AllUsers");
             }
-        }
+        }**/
+
+
 
         public int UserID
         {
@@ -205,16 +206,18 @@ namespace SchoolManagementSystem.ViewModels
         {
 
             GetAll();
+            //AllUsers = new ObservableCollection<User>();
+
         }
 
 
 
         public List<User> GetAll1 ()
         {
-            return ty.Users.ToList();
+            return ty.Users.Where(m => m.Type == "Student").ToList();
         }
 
-        public ObservableCollection<User> GetAll ()
+        public void GetAll ()
         {
             AllUsers = new ObservableCollection<User>();
             GetAll1().ForEach(data => AllUsers.Add(new User()
@@ -232,7 +235,7 @@ namespace SchoolManagementSystem.ViewModels
 
             }));
 
-            return AllUsers;
+            //return AllUsers;
 
         }
 
