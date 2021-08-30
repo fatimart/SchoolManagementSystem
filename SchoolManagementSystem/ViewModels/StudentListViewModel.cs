@@ -1,6 +1,7 @@
 ﻿using SchoolManagementSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,6 +17,22 @@ namespace SchoolManagementSystem.ViewModels
         public User user;
 
         private SchoolMSEntities1 ty = new SchoolMSEntities1();
+        public ObservableCollection<User> _AllUsers { get; private set; }
+       public ObservableCollection<User> AllUsers
+        {
+            get
+            {
+                return _AllUsers;
+            }
+            set
+            {
+                _AllUsers = value;
+                OnPropertyChanged("AllUsers");
+            }
+        }
+
+
+
         public int UserID
         {
             get { return user.UserID; }
@@ -146,47 +163,48 @@ namespace SchoolManagementSystem.ViewModels
             }
         }
 
-        /**public StudentListViewModel ()
+        
+
+        public StudentListViewModel ()
         {
-            
-                string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
-                using (SqlConnection connection = new SqlConnection(strcon))
-                {
-                    SqlCommand command = new SqlCommand(
-                         "select * from Users where Type='" + "Student" + "'", connection);
-                    connection.Open();
+            GetAll();
 
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            user = new User
-                            {
-                                UserID = Convert.ToInt32(reader["UserID"]),
-                                UserName = reader["UserName"].ToString(),
-                                Name = reader["Name"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                CPR = Convert.ToDecimal(reader["CPR"]),
-                                Address = reader["Address"].ToString(),
-                                DOB = Convert.ToDateTime(reader["DOB"]),
-                                Type = reader["Type"].ToString(),
-                                Password = reader["Password"].ToString(),
-                                ContactNo = reader["ContactNo"].ToString(),
-                            };
-                        }
-                    }
-                    //MessageBox.Show("edit" + Application.Current.Resources["UserName"].ToString());
-                    reader.Close();
-                
+        }
 
-            }
-        }**/
+
+
+        public List<User> GetAll1 ()
+        {
+            return ty.Users.Where(m => m.Type == "Student").ToList();
+        }
+
+        public void GetAll ()
+        {
+            AllUsers = new ObservableCollection<User>();
+            GetAll1().ForEach(data => AllUsers.Add(new User()
+            {
+                UserID = Convert.ToInt32(data.UserID),
+                UserName = data.UserName,
+                Name = data.Name,
+                Email = data.Email,
+                CPR = Convert.ToDecimal(data.CPR),
+                Address = data.Address,
+                DOB = Convert.ToDateTime(data.DOB),
+                Type = data.Type,
+                Password = data.Password,
+                ContactNo = data.ContactNo
+
+            }));
+
+            //return AllUsers;
+
+        }
 
 
         public void InsertUser ( string username, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
         {
+
             try
             {
                 User user1 = new User();
@@ -205,11 +223,18 @@ namespace SchoolManagementSystem.ViewModels
 
                 ty.Users.Add(user1);
                 ty.SaveChanges();
+                MessageBox.Show("New Student successfully saved.");
+
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                GetAll();
+                ResetData();
             }
 
         }
@@ -242,6 +267,11 @@ namespace SchoolManagementSystem.ViewModels
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    GetAll();
+                    ResetData();
+                }
             }
             else
             {
@@ -252,22 +282,33 @@ namespace SchoolManagementSystem.ViewModels
 
         public void DeleteUser ( int userID )
         {
-            if (CheckIfUserExists(userID))
+            if (MessageBox.Show("Confirm delete of this record?", "Student", MessageBoxButton.YesNo)
+                == MessageBoxResult.Yes)
             {
-                try
-
+                if (CheckIfUserExists(userID))
                 {
+                    try
 
-                    var deleteUser = ty.Users.Where(m => m.UserID == userID).Single();
-                    ty.Users.Remove(deleteUser);
-                    ty.SaveChanges();
+                    {
+
+                        var deleteUser = ty.Users.Where(m => m.UserID == userID).Single();
+                        ty.Users.Remove(deleteUser);
+                        ty.SaveChanges();
+                        MessageBox.Show("Record successfully deleted.");
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        GetAll();
+                        ResetData();
+                    }
+
                 }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
             }
 
             else
@@ -298,10 +339,10 @@ namespace SchoolManagementSystem.ViewModels
 
             user1.Name = string.Empty;
             user1.UserID = 0;
-            user1.UserName = string.Empty; 
-            user1.Email = string.Empty; 
+            user1.UserName = string.Empty;
+            user1.Email = string.Empty;
             user1.CPR = 0;
-            user1.Address = string.Empty; 
+            user1.Address = string.Empty;
             user1.Type = "Student";
             user1.Password = string.Empty;
             user1.ContactNo = string.Empty;
