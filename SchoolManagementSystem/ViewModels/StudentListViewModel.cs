@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,142 @@ using System.Windows;
 
 namespace SchoolManagementSystem.ViewModels
 {
-    class StudentListViewModel
+    class StudentListViewModel : ViewModelBase
     {
         public User user;
 
         private SchoolMSEntities1 ty = new SchoolMSEntities1();
+        public int UserID
+        {
+            get { return user.UserID; }
+            set
+            {
+                if (user.UserID != value)
+                {
+                    user.UserID = value;
+                    OnPropertyChanged("UserID");
+                }
+            }
+        }
 
-        public StudentListViewModel ()
+        public string UserName
+        {
+            get { return user.UserName; }
+            set
+            {
+                if (user.UserName != value)
+                {
+                    user.UserName = value;
+                    OnPropertyChanged("UserName");
+                }
+            }
+        }
+
+        public string Name
+        {
+            get { return user.Name; }
+            set
+            {
+                if (user.Name != value)
+                {
+                    user.Name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
+
+        public string Email
+        {
+            get { return user.Email; }
+            set
+            {
+                if (user.Email != value)
+                {
+                    user.Email = value;
+                    OnPropertyChanged("Email");
+                }
+            }
+        }
+
+        public decimal CPR
+        {
+            get { return user.CPR; }
+            set
+            {
+                if (user.CPR != value)
+                {
+                    user.CPR = value;
+                    OnPropertyChanged("CPR");
+                }
+            }
+        }
+
+        public string Address
+        {
+            get { return user.Address; }
+            set
+            {
+                if (user.Address != value)
+                {
+                    user.Address = value;
+                    OnPropertyChanged("Address");
+                }
+            }
+        }
+
+        public string Type
+        {
+            get { return user.Type; }
+            set
+            {
+                if (user.Type != value)
+                {
+                    user.Type = value;
+                    OnPropertyChanged("Type");
+                }
+            }
+        }
+
+        public string Password
+        {
+            get { return user.Password; }
+            set
+            {
+                if (user.Password != value)
+                {
+                    user.Password = value;
+                    OnPropertyChanged("Password");
+                }
+            }
+        }
+
+        public string ContactNo
+        {
+            get { return user.ContactNo; }
+            set
+            {
+                if (user.ContactNo != value)
+                {
+                    user.ContactNo = value;
+                    OnPropertyChanged("ContactNo");
+                }
+            }
+        }
+
+        public DateTime DOB
+        {
+            get { return user.DOB; }
+            set
+            {
+                if (user.DOB != value)
+                {
+                    user.DOB = value;
+                    OnPropertyChanged("dob");
+                }
+            }
+        }
+
+        /**public StudentListViewModel ()
         {
             
                 string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -52,7 +182,7 @@ namespace SchoolManagementSystem.ViewModels
                 
 
             }
-        }
+        }**/
 
 
         public void InsertUser ( string username, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
@@ -69,7 +199,7 @@ namespace SchoolManagementSystem.ViewModels
                 user1.CPR = cpr;
                 user1.Address = address;
                 user1.DOB = dob;
-                user1.Type = "user";
+                user1.Type = "Student";
                 user1.Password = password;
                 user1.ContactNo = contactNo;
 
@@ -84,23 +214,7 @@ namespace SchoolManagementSystem.ViewModels
 
         }
 
-        public void getUserByID ( int userID )
-        {
-            try
-            {
-                var query = from u in ty.Users
-                            where u.UserID == userID
-                            select u;
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        public void UpdateUser ( int userID, string username, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
+        public void UpdateUser ( int userID, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
         {
             if (CheckIfUserExists(userID))
             {
@@ -112,13 +226,12 @@ namespace SchoolManagementSystem.ViewModels
                                        where m.UserID == userID
                                        select m).Single();
 
-                    updateUser.UserName = username;
                     updateUser.Name = name;
                     updateUser.Email = email;
                     updateUser.CPR = cpr;
                     updateUser.Address = address;
                     updateUser.DOB = dob;
-                    updateUser.Type = "user";
+                    updateUser.Type = "Student";
                     updateUser.Password = password;
                     updateUser.ContactNo = contactNo;
 
@@ -177,6 +290,21 @@ namespace SchoolManagementSystem.ViewModels
             }
             return false;
 
+        }
+
+        public void ResetData ()
+        {
+            User user1 = new User();
+
+            user1.Name = string.Empty;
+            user1.UserID = 0;
+            user1.UserName = string.Empty; 
+            user1.Email = string.Empty; 
+            user1.CPR = 0;
+            user1.Address = string.Empty; 
+            user1.Type = "Student";
+            user1.Password = string.Empty;
+            user1.ContactNo = string.Empty;
         }
 
     }

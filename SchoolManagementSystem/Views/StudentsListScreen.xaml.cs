@@ -1,8 +1,10 @@
-﻿using SchoolManagementSystem.ViewModels;
+﻿using SchoolManagementSystem.Models;
+using SchoolManagementSystem.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -34,21 +36,15 @@ namespace SchoolManagementSystem.Views
 
         public void Load()
         {
-            usersDataGrid.Items.Refresh();
-           
+
+            usersDataGrid.Items.Refresh();           
 
         }
 
         private void Window_Loaded ( object sender, RoutedEventArgs e )
         {
-
-            //SchoolManagementSystem.SchoolMSDataSet schoolMSDataSet = ((SchoolManagementSystem.SchoolMSDataSet)(this.FindResource("schoolMSDataSet")));
-
-            // Load data into the table Users. You can modify this code as needed.
-            //SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter schoolMSDataSetUsersTableAdapter = new SchoolManagementSystem.SchoolMSDataSetTableAdapters.UsersTableAdapter();
-            // schoolMSDataSetUsersTableAdapter.Fill(schoolMSDataSet.Users);
-
             usersDataGrid.Items.Refresh();
+            
 
         }
 
@@ -68,13 +64,17 @@ namespace SchoolManagementSystem.Views
                 DataTable dt = new DataTable("Users");
 
                 sda.Fill(dt);
-
                 usersDataGrid.ItemsSource = dt.DefaultView;
 
-             
+                usersDataGrid.Items.Refresh();
+
+               
+
             }
 
         }
+
+ 
 
         private void AddNewStudent_Click ( object sender, RoutedEventArgs e )
         {
@@ -95,9 +95,8 @@ namespace SchoolManagementSystem.Views
 
         private void UpdateStudent_Click ( object sender, RoutedEventArgs e )
         {
-            _userViewModel.UpdateUser(
+            _userViewModel.UpdateUser( 
                                       Convert.ToInt32(userIDTextBox.Text.Trim()),
-                                      userNameTextBox.Text.Trim(),
                                       nameTextBox.Text.Trim(),
                                       emailTextBox.Text.Trim(),
                                       Convert.ToDecimal(cPRTextBox.Text),
@@ -113,6 +112,8 @@ namespace SchoolManagementSystem.Views
 
         public void Clear ()
         {
+           // _userViewModel.ResetData();
+
             userIDTextBox.Text = "";
             userNameTextBox.Text = "";
             nameTextBox.Text = "";
@@ -130,6 +131,34 @@ namespace SchoolManagementSystem.Views
             Load();
         }
 
+      
+        private void Button_Click_1 ( object sender, RoutedEventArgs e )
+        {
 
+        }
+
+        private void usersDataGrid_SelectionChanged ( object sender, SelectionChangedEventArgs e )
+        {
+            DataGrid gd = (DataGrid)sender;
+            DataRowView row_selected = gd.SelectedItem as DataRowView;
+
+            if(row_selected != null)
+            {
+                userIDTextBox.Text = row_selected["UserID"].ToString();
+                userNameTextBox.Text = row_selected["UserName"].ToString(); 
+                nameTextBox.Text = row_selected["Name"].ToString();
+                emailTextBox.Text = row_selected["Email"].ToString();
+                cPRTextBox.Text = row_selected["CPR"].ToString();
+                addressTextBox.Text = row_selected["Address"].ToString();
+                dOBDatePicker.Text = row_selected["DOB"].ToString();
+                passwordTextBox.Text = row_selected["Password"].ToString();
+                contactNoTextBox.Text = row_selected["ContactNo"].ToString();
+            }
+        }
+
+        private void Reset_Click ( object sender, RoutedEventArgs e )
+        {
+
+        }
     }
 }

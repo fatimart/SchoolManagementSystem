@@ -14,6 +14,7 @@ namespace SchoolManagementSystem.ViewModels
     {
 
         public User user;
+        private SchoolMSEntities1 ty = new SchoolMSEntities1();
 
         public EditProfileViewModel ()
         {
@@ -45,12 +46,37 @@ namespace SchoolManagementSystem.ViewModels
                         };
                     }
                 }
-                MessageBox.Show("edit" + UserViewModel.userSession.UserID.ToString());
+                //MessageBox.Show("edit" + UserViewModel.userSession.UserID.ToString());
                 reader.Close();
             }
 
         }
 
-   
+        public void UpdateUser ( int userID, string name, string email, decimal cpr, string address, DateTime dob, string password, string contactNo )
+        {
+
+            try
+                {
+                    User updateUser = (from m in ty.Users
+                                       where m.UserID == userID
+                                       select m).Single();
+
+                    updateUser.Name = name;
+                    updateUser.Email = email;
+                    updateUser.CPR = cpr;
+                    updateUser.Address = address;
+                    updateUser.DOB = dob;
+                    updateUser.Password = password;
+                    updateUser.ContactNo = contactNo;
+
+                    ty.SaveChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+        }
+
     }
 }

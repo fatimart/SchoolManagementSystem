@@ -38,7 +38,8 @@ namespace SchoolManagementSystem
         {
             if(userViewModel.login(txtUsername.Text.Trim(), txtPassword.Password.ToString()))
             {
-                ProfileScreen dashboard = new ProfileScreen();
+
+                StudentsListScreen dashboard = new StudentsListScreen();
                 dashboard.Show();
                 this.Close();
             }

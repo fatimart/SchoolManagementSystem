@@ -259,8 +259,6 @@ namespace SchoolManagementSystem.ViewModels
                         reader.Close();
                         //MessageBox.Show(userSession.UserName);
                         MessageBox.Show( Application.Current.Resources["UserID"].ToString());
-                        //MessageBox.Show(Application.Current.Resources["Type"].ToString());
-
 
                         return true;
                     }
@@ -343,7 +341,7 @@ namespace SchoolManagementSystem.ViewModels
                     updateUser.CPR = cpr;
                     updateUser.Address = address;
                     updateUser.DOB = dob;
-                    updateUser.Type = "user";
+                    updateUser.Type = "Student";
                     updateUser.Password = password;
                     updateUser.ContactNo = contactNo;
 
