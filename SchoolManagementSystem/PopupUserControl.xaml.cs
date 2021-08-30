@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SchoolManagementSystem.Views
+namespace SchoolManagementSystem
 {
     /// <summary>
-    /// Interaction logic for HomeScreen.xaml
+    /// Interaction logic for PopupUserControl.xaml
     /// </summary>
-    public partial class HomeScreen : Window
+    public partial class PopupUserControl : UserControl
     {
-        public HomeScreen ()
+        public PopupUserControl()
         {
             InitializeComponent();
         }
